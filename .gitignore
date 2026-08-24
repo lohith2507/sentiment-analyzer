@@ -1,0 +1,14 @@
+# Datasets and generated artifacts (too large for GitHub)
+*.csv
+processed/
+models/
+.gradio/
+.cursor/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
