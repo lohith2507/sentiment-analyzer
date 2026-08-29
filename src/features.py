@@ -72,8 +72,12 @@ def extract_text_features(text: str) -> dict[str, float | int]:
     }
 
 
-def build_feature_frame(df: pd.DataFrame, text_col: str = "text") -> pd.DataFrame:
-    """Add NLTK/VADER features to a dataframe that already has text labels."""
+def build_feature_frame(df: pd.DataFrame, text_col: str = "text_raw") -> pd.DataFrame:
+    """Add NLTK/VADER features to a dataframe that already has text labels.
+
+    Features are computed on the unnormalized text so that casing, punctuation,
+    and emoji signal survives; the model itself consumes the normalized column.
+    """
     ensure_nltk_data()
     feature_rows = [extract_text_features(t) for t in df[text_col]]
     features = pd.DataFrame(feature_rows, index=df.index)

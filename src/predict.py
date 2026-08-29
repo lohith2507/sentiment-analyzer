@@ -7,7 +7,7 @@ from pathlib import Path
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-from src.data_loader import ID2LABEL
+from src.data_loader import ID2LABEL, normalize_for_model
 from src.features import extract_text_features
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -15,7 +15,7 @@ DEFAULT_MODEL_DIR = ROOT / "models" / "sentiment-distilbert"
 
 
 class SentimentPredictor:
-    def __init__(self, model_dir: Path = DEFAULT_MODEL_DIR, max_length: int = 128):
+    def __init__(self, model_dir: Path = DEFAULT_MODEL_DIR, max_length: int = 192):
         self.model_dir = Path(model_dir)
         self.max_length = max_length
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_dir)
@@ -25,8 +25,8 @@ class SentimentPredictor:
         self.model.to(self.device)
 
     def predict(self, text: str) -> dict:
-        text = (text or "").strip()
-        if not text:
+        raw_text = (text or "").strip()
+        if not raw_text:
             return {
                 "sentiment": "neutral",
                 "confidence": 0.0,
@@ -34,8 +34,11 @@ class SentimentPredictor:
                 "features": {},
             }
 
+        # The model was trained on normalized text, so serving must match.
+        model_text = normalize_for_model(raw_text)
+
         encoded = self.tokenizer(
-            text,
+            model_text,
             return_tensors="pt",
             truncation=True,
             padding=True,
@@ -54,5 +57,5 @@ class SentimentPredictor:
             "sentiment": ID2LABEL[label_id],
             "confidence": round(probs[label_id], 4),
             "probabilities": probabilities,
-            "features": extract_text_features(text),
+            "features": extract_text_features(raw_text),
         }
