@@ -2,6 +2,13 @@
 
 Fine-tuned DistilBERT classifier for English social text (**positive**, **neutral**, **negative**), trained on YouTube comments and McDonald's reviews. Includes data cleaning, NLTK/VADER feature extraction, training with class-weighted loss, held-out evaluation, and a Gradio demo.
 
+## Requirements
+
+- Python 3.10+ (3.11 recommended)
+- ~2 GB disk for the fine-tuned checkpoint under `models/`
+- GPU optional — training and inference run on CPU; CUDA is used automatically when available
+- On first feature build or Gradio prediction, NLTK downloads `vader_lexicon`, `punkt`, and `punkt_tab` into your local NLTK data dir (no manual step)
+
 ## Setup
 
 ```bash
@@ -63,5 +70,6 @@ Requires a trained model at `models/sentiment-distilbert/`.
 
 ## Notes
 
+- Feature extraction and the Gradio app call `ensure_nltk_data()` so lexicon/tokenizer assets download on first use.
 - Inference applies the same `normalize_for_model` transform used in training.
 - `processed/` and `models/` are intentionally ignored; regenerate them locally after pulling.
