@@ -19,8 +19,17 @@ pip install -r requirements.txt
 
 Place the source CSVs at the repo root (they are gitignored):
 
-- `YoutubeCommentsDataSet.csv`
-- `McDonald_s_Reviews.csv`
+- `YoutubeCommentsDataSet.csv` — columns `Comment`, `Sentiment` (`positive` / `neutral` / `negative`)
+- `McDonald_s_Reviews.csv` — columns `review`, `rating` (`1 star` … `5 stars`)
+
+### Label mapping
+
+| Source | Raw value | Model label |
+| --- | --- | --- |
+| YouTube | `positive` / `neutral` / `negative` | same |
+| McDonald's | 1–2 stars | `negative` |
+| McDonald's | 3 stars | `neutral` (or dropped with `--drop-three-star`) |
+| McDonald's | 4–5 stars | `positive` |
 
 ## Pipeline
 
