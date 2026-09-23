@@ -1,6 +1,6 @@
-# Social Media Sentiment Analyzer
-
-Fine-tuned DistilBERT classifier for English social text (**positive**, **neutral**, **negative**), trained on YouTube comments and McDonald's reviews. Includes data cleaning, NLTK/VADER feature extraction, training with class-weighted loss, held-out evaluation, and a Gradio demo.
+ok 2837 -> 2914
+sha 542675dae99a072e3e171f8e690ff91b072dd00a
+sifier for English social text (**positive**, **neutral**, **negative**), trained on YouTube comments and McDonald's reviews. Includes data cleaning, NLTK/VADER feature extraction, training with class-weighted loss, held-out evaluation, and a Gradio demo.
 
 ## Requirements
 
@@ -70,6 +70,7 @@ Requires a trained model at `models/sentiment-distilbert/`.
 | Path | Role |
 | --- | --- |
 | `app.py` | Gradio UI for live predictions |
+| `requirements.txt` | Python dependencies for training and the Gradio app |
 | `build_features.py` | Cleaning, splits, and feature file |
 | `src/data_loader.py` | Load, repair, normalize, and split data |
 | `src/features.py` | NLTK/VADER text features |
