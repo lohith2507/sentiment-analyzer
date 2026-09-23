@@ -1,6 +1,6 @@
-ok 2837 -> 2914
-sha 542675dae99a072e3e171f8e690ff91b072dd00a
-sifier for English social text (**positive**, **neutral**, **negative**), trained on YouTube comments and McDonald's reviews. Includes data cleaning, NLTK/VADER feature extraction, training with class-weighted loss, held-out evaluation, and a Gradio demo.
+# Social Media Sentiment Analyzer
+
+Fine-tuned DistilBERT classifier for English social text (**positive**, **neutral**, **negative**), trained on YouTube comments and McDonald's reviews. Includes data cleaning, NLTK/VADER feature extraction, training with class-weighted loss, held-out evaluation, and a Gradio demo.
 
 ## Requirements
 
