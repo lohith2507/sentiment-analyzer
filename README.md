@@ -39,7 +39,7 @@ Place the source CSVs at the repo root (they are gitignored):
 python build_features.py
 ```
 
-Writes stratified `processed/train.csv`, `val.csv`, `test.csv`, and optional `train_features.csv`. Useful flags: `--drop-three-star`, `--min-words`, `--skip-features`.
+Writes stratified `processed/train.csv`, `val.csv`, `test.csv`, and optional `train_features.csv`. Useful flags: `--drop-three-star`, `--min-words` (default 2), `--skip-features`, `--output-dir` (default `processed/`).
 
 ### 2. Fine-tune DistilBERT
 
