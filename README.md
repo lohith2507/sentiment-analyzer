@@ -47,7 +47,7 @@ Writes stratified `processed/train.csv`, `val.csv`, `test.csv`, and optional `tr
 python -m src.train
 ```
 
-Saves the best checkpoint under `models/sentiment-distilbert/`. Both training sources are normalized the same way so the model cannot cheat by detecting which dataset a row came from.
+Saves the best checkpoint under `models/sentiment-distilbert/`. Useful flags: `--epochs` (default 2), `--batch-size` (default 16), `--max-length` (default 192), `--base-model` (default `distilbert-base-uncased`), `--max-samples` for a quick smoke run on a subset, and `--no-class-weighting`. Both training sources are normalized the same way so the model cannot cheat by detecting which dataset a row came from.
 
 ### 3. Evaluate on the held-out test set
 
