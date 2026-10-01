@@ -55,7 +55,7 @@ Saves the best checkpoint under `models/sentiment-distilbert/`. Useful flags: `-
 python -m src.evaluate
 ```
 
-Reports per-class metrics, a confusion matrix, per-source accuracy/F1, and a majority-class baseline.
+Reports per-class metrics, a confusion matrix, per-source accuracy/F1, and a majority-class baseline. Useful flags: `--test-path` (default `processed/test.csv`), `--model-dir` (default `models/sentiment-distilbert/`), `--batch-size` (default 32), and `--max-length` (default 192).
 
 ### 4. Launch the Gradio app
 
