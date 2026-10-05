@@ -67,6 +67,15 @@ python app.py
 
 Requires a trained model at `models/sentiment-distilbert/`.
 
+To predict from Python without the UI (run from the repo root):
+
+```python
+from src.predict import SentimentPredictor
+
+result = SentimentPredictor().predict("Loving the new update!")
+# keys: sentiment, confidence, probabilities, features
+```
+
 ## Project layout
 
 | Path | Role |
