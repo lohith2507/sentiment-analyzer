@@ -94,5 +94,5 @@ result = SentimentPredictor().predict("Loving the new update!")
 - Feature extraction and the Gradio app call `ensure_nltk_data()` so lexicon/tokenizer assets download on first use.
 - Inference applies the same `normalize_for_model` transform used in training.
 - Empty or whitespace-only input returns `neutral` with confidence `0.0` and skips the model call.
-- `python app.py` launches Gradio locally (`share=False` by default); pass `share=True` only if you want a temporary public link.
+- `python app.py` launches Gradio locally (`share=False` by default); for a temporary public link, add `share=True` to the `demo.launch()` call in `app.py` (there is no command-line flag).
 - `processed/` and `models/` are intentionally ignored; regenerate them locally after pulling.
