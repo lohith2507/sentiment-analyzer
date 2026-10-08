@@ -76,6 +76,8 @@ result = SentimentPredictor().predict("Loving the new update!")
 # keys: sentiment, confidence, probabilities, features
 ```
 
+`SentimentPredictor` loads `models/sentiment-distilbert/` by default; pass `model_dir=` to load a checkpoint saved elsewhere (for example a custom `--output-dir` from training) and `max_length=` (default 192) to change the token limit.
+
 ## Project layout
 
 | Path | Role |
