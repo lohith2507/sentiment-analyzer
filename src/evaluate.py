@@ -28,6 +28,11 @@ def predict_labels(
     batch_size: int = 32,
     max_length: int = 192,
 ) -> np.ndarray:
+    """Return predicted label ids for ``texts`` in batches.
+
+    Texts should already be passed through ``normalize_for_model`` (the
+    ``text`` column of the processed splits is), matching training.
+    """
     tokenizer = AutoTokenizer.from_pretrained(model_dir)
     model = AutoModelForSequenceClassification.from_pretrained(model_dir)
     model.eval()
