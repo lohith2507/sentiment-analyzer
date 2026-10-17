@@ -94,6 +94,12 @@ def load_mcdonalds(
     path: Path = MCDONALDS_PATH,
     drop_three_star: bool = False,
 ) -> pd.DataFrame:
+    """Load McDonald's reviews, deriving sentiment from the star rating.
+
+    1-2 stars map to negative, 3 to neutral, and 4-5 to positive (see
+    ``MCDONALDS_RATING_MAP``). Pass ``drop_three_star=True`` to exclude the
+    ambiguous 3-star reviews instead of labelling them neutral.
+    """
     df = pd.read_csv(path, encoding="utf-8", encoding_errors="replace")
     df = df.rename(columns={"review": "text_raw"})
     ratings = df["rating"].astype(str).str.strip()
