@@ -77,6 +77,11 @@ def evaluate(
     batch_size: int = 32,
     max_length: int = 192,
 ) -> dict[str, float]:
+    """Score ``model_dir`` on the held-out test CSV and print a full report.
+
+    Returns accuracy, macro F1, and the majority-class baseline so a run can
+    be compared against always predicting the most common label.
+    """
     df = pd.read_csv(test_path)
     y_true = df["label_id"].to_numpy()
     y_pred = predict_labels(
