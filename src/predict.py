@@ -25,6 +25,12 @@ class SentimentPredictor:
         self.model.to(self.device)
 
     def predict(self, text: str) -> dict:
+        """Classify ``text`` and return label, confidence, and features.
+
+        Blank or whitespace-only input short-circuits without running the
+        model: it returns ``"neutral"`` with confidence 0.0, all-zero
+        probabilities, and an empty ``features`` dict.
+        """
         raw_text = (text or "").strip()
         if not raw_text:
             return {
