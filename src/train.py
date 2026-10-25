@@ -64,6 +64,12 @@ class WeightedTrainer(Trainer):
 
 
 def _load_splits(processed_dir: Path) -> dict[str, pd.DataFrame]:
+    """Return train/val splits, reusing cached CSVs in ``processed_dir`` when present.
+
+    If ``train.csv`` and ``val.csv`` are missing, the merged data is re-split and
+    written there. Delete those files (or rerun ``build_features.py``) after the raw
+    data or cleaning options change, otherwise stale splits are reused.
+    """
     train_path = processed_dir / "train.csv"
     val_path = processed_dir / "val.csv"
     if train_path.exists() and val_path.exists():
