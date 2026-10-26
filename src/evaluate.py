@@ -57,6 +57,11 @@ def predict_labels(
 
 
 def print_confusion_matrix(y_true: np.ndarray, y_pred: np.ndarray) -> None:
+    """Print a labelled confusion matrix (rows are actual, columns predicted).
+
+    Every label in ``SENTIMENT_LABELS`` is included, even ones absent from the
+    split, so the grid keeps the same shape across runs.
+    """
     labels = list(range(len(SENTIMENT_LABELS)))
     matrix = confusion_matrix(y_true, y_pred, labels=labels)
     width = max(len(name) for name in SENTIMENT_LABELS) + 2
