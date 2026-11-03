@@ -18,6 +18,11 @@ EXAMPLES = [
 
 
 def analyze(text: str):
+    """Run the predictor and shape its output for the three Gradio panels.
+
+    Returns a Markdown summary, a label-to-probability dict for ``gr.Label``,
+    and a small dict of NLTK/VADER features for ``gr.JSON``.
+    """
     result = predictor.predict(text)
     probs = result["probabilities"]
     features = result["features"]
