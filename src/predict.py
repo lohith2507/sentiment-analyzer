@@ -15,6 +15,11 @@ DEFAULT_MODEL_DIR = ROOT / "models" / "sentiment-distilbert"
 
 
 class SentimentPredictor:
+    """Load the fine-tuned model once and classify text on CPU or GPU.
+
+    Uses CUDA when available; ``max_length`` caps tokens per input.
+    """
+
     def __init__(self, model_dir: Path = DEFAULT_MODEL_DIR, max_length: int = 192):
         self.model_dir = Path(model_dir)
         self.max_length = max_length
