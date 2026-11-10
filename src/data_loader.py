@@ -83,6 +83,11 @@ def _base_frame(df: pd.DataFrame, source: str) -> pd.DataFrame:
 
 
 def load_youtube(path: Path = YOUTUBE_PATH) -> pd.DataFrame:
+    """Load YouTube comments, keeping only rows with a known sentiment label.
+
+    Labels are stripped and lowercased before being checked against
+    ``SENTIMENT_LABELS``; rows with any other label are dropped.
+    """
     df = pd.read_csv(path, encoding="utf-8", encoding_errors="replace")
     df = df.rename(columns={"Comment": "text_raw", "Sentiment": "sentiment"})
     df["sentiment"] = df["sentiment"].astype(str).str.strip().str.lower()
