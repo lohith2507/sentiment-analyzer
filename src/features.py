@@ -96,6 +96,10 @@ def build_feature_frame(df: pd.DataFrame, text_col: str = "text_raw") -> pd.Data
 
 
 def save_feature_file(df: pd.DataFrame, path: str | Path) -> Path:
+    """Write ``df`` to ``path`` as CSV (no index) and return the resolved ``Path``.
+
+    Missing parent directories are created first.
+    """
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(path, index=False)
