@@ -33,6 +33,8 @@ Place the source CSVs at the repo root (they are gitignored):
 
 ## Pipeline
 
+Run every command below from the repo root with the virtual environment activated.
+
 ### 1. Clean data and build features
 
 ```bash
