@@ -69,6 +69,8 @@ python app.py
 
 Requires a trained model at `models/sentiment-distilbert/`.
 
+Once it starts, open the local URL Gradio prints in the terminal (by default `http://127.0.0.1:7860`).
+
 To predict from Python without the UI (run from the repo root):
 
 ```python
