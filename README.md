@@ -103,3 +103,4 @@ result = SentimentPredictor().predict("Loving the new update!")
 - `python app.py` launches Gradio locally (`share=False` by default); for a temporary public link, add `share=True` to the `demo.launch()` call in `app.py` (there is no command-line flag).
 - `processed/` and `models/` are intentionally ignored; regenerate them locally after pulling.
 - The first training run downloads the `distilbert-base-uncased` base weights from the Hugging Face Hub, so it needs internet access once; later runs reuse the local cache.
+- `python app.py` and `python -m src.evaluate` both need a trained checkpoint in `models/`, so run `python -m src.train` first.
